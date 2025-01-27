@@ -1,6 +1,9 @@
 # depslib dependency file v1.0
-1584205420 source:c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\clasematriz\clasematriz\main.cpp
+1737948491 source:c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\clasematriz\clasematriz\main.cpp
 	<iostream>
+	"Matriz.hpp"
 
 1737860463 source:c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\clasematriz\clasematriz\matriz.cpp
+
+1737948491 c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\clasematriz\clasematriz\matriz.hpp
 

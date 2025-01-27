@@ -2,14 +2,18 @@
 #define MATRIZ_HPP_INCLUDED
 
 class Matriz{
+    friend std::istream & operator>> (std::istream &entrada, Matriz &v);
+    friend std::ostream & operator<< (std::ostream &salida, const Matriz v);
 public:
-    explicit Vector(int renglones = 1, int columnas = 1);
-    ~Vector();
+    explicit Matriz(int reng = 1, int col = 1);
+    ~Matriz();
+
+
 private:
 
     int renglones;
     int columnas;
-    double **arreglo;
+    double **componente;
 
 };
 
