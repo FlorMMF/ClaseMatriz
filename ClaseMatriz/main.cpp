@@ -32,7 +32,7 @@ int main()
     cin >> w;
 
 
-    cout << v;
+    cout << v << "+";
     cout << endl;
     cout << w;
     //Suma de dos matrices *********************************************************
