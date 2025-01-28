@@ -7,35 +7,41 @@ int main()
     cout << "Programa que realiza operaciones de matrices" << endl;
 
 
-    int n; //renglones
-    int m; //columnas
+    int Vn, Wn; //renglones
+    int Vm, Wm; //columnas
 
     //Captura de los vectores ****************************************************
     cout << "Ingrese la cantidad de renglones que tiene la primera matriz" << endl;
-    cin >> n;
+    cin >> Vn;
     cout << "Ingrese la cantidad de columnas que tiene la primera matriz" << endl;
-    cin >> m;
+    cin >> Vm;
 
-    Matriz  v(n,m);
+    Matriz  v(Vn,Vm);
 
     cout << "Ingrese los componentes de la primera matriz" << endl;
     cin >> v;
 
     cout << "Ingrese la cantidad de renglones que tiene la segunda matriz" << endl;
-    cin >> n;
+    cin >> Wn;
     cout << "Ingrese la cantidad de columnas que tiene la segunda matriz" << endl;
-    cin >> m;
+    cin >> Wm;
 
-    Matriz  w(n,m);
+    Matriz  w(Wn,Wm);
 
     cout << "Ingrese los componentes de la segunda matriz" << endl;
     cin >> w;
 
 
-    cout << v << "+";
-    cout << endl;
-    cout << w;
+
     //Suma de dos matrices *********************************************************
+    Matriz q(Vn,Vm);
+    q= v + w;
+
+    cout << v << endl << endl << "+" << endl << endl << w << endl << endl << "=" << endl << endl << q;
+
+    Matriz p(Vn,Vm);
+    p= v - w;
+    cout <<  endl << endl << v << endl << endl << "-" << endl << endl << w << endl << endl << "=" << endl << endl << p;
 
     //Resta de dos matrices ********************************************************
 

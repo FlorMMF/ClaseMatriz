@@ -24,6 +24,9 @@ Matriz::Matriz(int reng, int col){
 }
 
 Matriz::~Matriz(){
+    for (int i = 0; i < renglones; ++i) {
+        delete[] componente[i];
+    }
     delete[] componente;
 }
 
@@ -60,6 +63,39 @@ Matriz &Matriz::operator=(const Matriz &otra) {
     }
     return *this;
 }
+
+
+Matriz Matriz::operator+(const Matriz v) const{
+
+    if(renglones != v.renglones || columnas != v.columnas)throw "Matrices incompatibles para la suma";
+    Matriz s(renglones,columnas);
+    for(int j = 0; j < s.renglones; ++j){
+        for(int i = 0; i < s.columnas ; ++ i){
+            s.componente[j][i] = componente[j][i] + v.componente[j][i];
+        }
+    }
+
+    return s;
+
+}
+
+Matriz Matriz::operator-(const Matriz v) const{
+
+    if(renglones != v.renglones || columnas != v.columnas)throw "Matrices incompatibles para la suma";
+    Matriz s(renglones,columnas);
+    for(int j = 0; j < s.renglones; ++j){
+        for(int i = 0; i < s.columnas ; ++ i){
+            s.componente[j][i] = componente[j][i] - v.componente[j][i];
+        }
+    }
+
+    return s;
+
+}
+
+
+ //Operadores *******************************************
+
 
 //Matriz para escalar
 Matriz Matriz::operator*(double escalar) const {
@@ -126,7 +162,7 @@ std::istream &operator>>(std::istream &entrada, Matriz &v) {
     for (int i = 0; i < v.renglones; ++i) {
         for (int j = 0; j < v.columnas; ++j) {
             cout << "Componente [" << i << " , " << j << "]: ";
-            entrada >> v.componente[i][j];
+            entrada >> v.componente[j][i];
         }
     }
     return entrada;
