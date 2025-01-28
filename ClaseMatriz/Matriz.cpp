@@ -1,57 +1,143 @@
-
 #include <iostream>
 #include "Matriz.hpp"
 #include <cmath>
 using  namespace std;
 
-//constructor y destructor ******************************
+//Constructor y destructor ******************************
 
 Matriz::Matriz(int reng, int col){
     renglones = reng;
     columnas = col;
     try{
         componente = new double*[renglones];
-
-        for (int i = 0; i < renglones; ++i) {
+        for (int i = 0; i < renglones; ++i){
             componente[i] = new double[columnas];
         }
-
-        for(int j = 0; j < renglones ; ++ j){
-            for(int i = 0; i < columnas ; ++ i){
-                componente[i][j] = 0;
+        for (int j = 0; j < renglones; ++j){
+            for (int i = 0; i < columnas; ++i){
+                componente[j][i] = 0;
             }
         }
-
-    }catch(bad_alloc &){
+    }catch (bad_alloc &) {
         throw "Problema de asignacion de memoria";
     }
 }
 
 Matriz::~Matriz(){
     delete[] componente;
- }
+}
 
- //Operaciones ******************************************
+//Copia du la copia du la copia
+Matriz::Matriz(const Matriz &otra) {
+    renglones = otra.renglones;
+    columnas = otra.columnas;
+    componente = new double*[renglones];
+    for (int i = 0; i < renglones; ++i) {
+        componente[i] = new double[columnas];
+        for (int j = 0; j < columnas; ++j) {
+            componente[i][j] = otra.componente[i][j];
+        }
+    }
+}
 
- //Operadores *******************************************
+//Operador igual =) (parece una cara feliz)
+Matriz &Matriz::operator=(const Matriz &otra) {
+    if (this != &otra) {
+        for (int i = 0; i < renglones; ++i) {
+            delete[] componente[i];
+        }
+        delete[] componente;
 
- std::istream & operator>> (std::istream &entrada, Matriz &v){
-    for(int j = 0; j < v.renglones ; ++ j){
-        for(int i = 0; i < v.columnas ; ++ i){
+        renglones = otra.renglones;
+        columnas = otra.columnas;
+        componente = new double*[renglones];
+        for (int i = 0; i < renglones; ++i) {
+            componente[i] = new double[columnas];
+            for (int j = 0; j < columnas; ++j) {
+                componente[i][j] = otra.componente[i][j];
+            }
+        }
+    }
+    return *this;
+}
+
+//Matriz para escalar
+Matriz Matriz::operator*(double escalar) const {
+    Matriz resultado(renglones, columnas);
+    for (int i = 0; i < renglones; ++i) {
+        for (int j = 0; j < columnas; ++j) {
+            resultado.componente[i][j] = componente[i][j] * escalar;
+        }
+    }
+    return resultado;
+}
+
+//Transponida de una matriz
+Matriz Matriz::transponida() const {
+    Matriz resultado(columnas, renglones);
+    for (int i = 0; i < renglones; ++i) {
+        for (int j = 0; j < columnas; ++j) {
+            resultado.componente[j][i] = componente[i][j];
+        }
+    }
+    return resultado;
+}
+
+//Invertida de matriz cuadrada
+Matriz Matriz::invertida() const {
+    if (renglones != columnas) {
+        throw "Solo se puede calcular la inversa de matrices cuadradas";
+    }
+    int n = renglones;
+    Matriz inversa(n, n);
+    Matriz temp(*this);
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            inversa.componente[i][j] = (i == j) ? 1 : 0;
+        }
+    }
+
+    for (int i = 0; i < n; ++i) {
+        if (temp.componente[i][i] == 0) {
+            throw "La matriz no es invertible";
+        }
+        double pivote = temp.componente[i][i];
+        for (int j = 0; j < n; ++j) {
+            temp.componente[i][j] /= pivote;
+            inversa.componente[i][j] /= pivote;
+        }
+        for (int k = 0; k < n; ++k) {
+            if (k != i) {
+                double factor = temp.componente[k][i];
+                for (int j = 0; j < n; ++j) {
+                    temp.componente[k][j] -= factor * temp.componente[i][j];
+                    inversa.componente[k][j] -= factor * inversa.componente[i][j];
+                }
+            }
+        }
+    }
+    return inversa;
+}
+
+// Operadores *******************************************
+
+std::istream &operator>>(std::istream &entrada, Matriz &v) {
+    for (int i = 0; i < v.renglones; ++i) {
+        for (int j = 0; j < v.columnas; ++j) {
             cout << "Componente [" << i << " , " << j << "]: ";
             entrada >> v.componente[i][j];
         }
     }
     return entrada;
- }
+}
 
- std::ostream & operator<< (std::ostream &salida, const Matriz v){
-
-     for(int j = 0; j < v.renglones ; ++ j){
-        for(int i = 0; i < v.columnas ; ++ i){
-            cout << v.componente[i][j] << "  ";
+std::ostream &operator<<(std::ostream &salida, const Matriz &v) {
+    for (int i = 0; i < v.renglones; ++i) {
+        for (int j = 0; j < v.columnas; ++j) {
+            salida << v.componente[i][j] << "  ";
         }
-        cout << endl;
+        salida << endl;
     }
     return salida;
- }
+}
