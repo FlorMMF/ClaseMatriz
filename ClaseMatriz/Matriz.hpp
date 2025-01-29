@@ -4,10 +4,10 @@
 #include <iostream>
 
 class Matriz {
-
-public:
     friend std::istream &operator>>(std::istream &entrada, Matriz &v);
     friend std::ostream &operator<<(std::ostream &salida, const Matriz &v);
+public:
+
 
     Matriz(int reng = 1, int col = 1);
     ~Matriz();
@@ -20,6 +20,7 @@ public:
 
     Matriz operator+(const Matriz v) const;
     Matriz operator-(const Matriz v) const;
+    Matriz Redimensionar(int reng, int col) const;
 
 private:
     int renglones;

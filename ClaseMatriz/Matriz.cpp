@@ -94,7 +94,7 @@ Matriz Matriz::operator-(const Matriz v) const{
 }
 
 
- //Operadores *******************************************
+
 
 
 //Matriz para escalar
@@ -156,13 +156,27 @@ Matriz Matriz::invertida() const {
     return inversa;
 }
 
+Matriz Matriz::Redimensionar(int reng, int col) const{
+    Matriz s(reng, col);
+    for(int j = 0; j < s.renglones; ++j){
+        for(int i = 0; i < s.columnas ; ++ i){
+            if((j>=renglones) || (i >=columnas)){
+                s.componente[j][i] = 0;
+            }else{
+                s.componente[j][i] = componente [j][i];
+            }
+        }
+    }
+    return s;
+}
+
 // Operadores *******************************************
 
 std::istream &operator>>(std::istream &entrada, Matriz &v) {
     for (int i = 0; i < v.renglones; ++i) {
         for (int j = 0; j < v.columnas; ++j) {
             cout << "Componente [" << i << " , " << j << "]: ";
-            entrada >> v.componente[j][i];
+            entrada >> v.componente[i][j];
         }
     }
     return entrada;
