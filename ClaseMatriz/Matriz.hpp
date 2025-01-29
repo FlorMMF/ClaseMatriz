@@ -6,6 +6,7 @@
 class Matriz {
     friend std::istream &operator>>(std::istream &entrada, Matriz &v);
     friend std::ostream &operator<<(std::ostream &salida, const Matriz &v);
+    friend Matriz operator* (double escalar, const Matriz v);
 public:
 
 

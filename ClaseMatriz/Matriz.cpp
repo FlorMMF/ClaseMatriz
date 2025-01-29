@@ -170,6 +170,16 @@ Matriz Matriz::Redimensionar(int reng, int col) const{
     return s;
 }
 
+Matriz operator* (double escalar, const Matriz v){
+    Matriz resultado(v.renglones, v.columnas);
+    for (int i = 0; i < v.renglones; ++i) {
+        for (int j = 0; j < v.columnas; ++j) {
+            resultado.componente[i][j] = v.componente[i][j] * escalar;
+        }
+    }
+    return resultado;
+}
+
 // Operadores *******************************************
 
 std::istream &operator>>(std::istream &entrada, Matriz &v) {
