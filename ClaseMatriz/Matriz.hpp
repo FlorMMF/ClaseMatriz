@@ -28,29 +28,29 @@
  Como suma, resta, multiplicacion, etc.
  */ class Matriz {
 
-    /** \brief Método que ingresa los componentes de una matriz
+    /** \brief M&eacute;todo que ingresa los componentes de una matriz
      *
      * \param entrada std::istream&
-     * \param v Matriz& La dirección de la matriz
+     * \param v Matriz& La direcci&oacute;n de la matriz
      * \return  std::istream&
      *
      */friend std::istream &operator>>(std::istream &entrada, Matriz &v);
 
-    /** \brief Método que imprime los componentes de una matriz
+    /** \brief M&eacute;todo que imprime los componentes de una matriz
      *
      * \param salida std::ostream&
-     * \param v const Matriz& La dirección de la matriz
+     * \param v const Matriz& La direcci&oacute;n de la matriz
      * \return std::ostream&
      *
      */
     friend std::ostream &operator<<(std::ostream &salida, const Matriz &v);
 
 
-    /** \brief Método no miembro de la clase que multiplica una matriz con un número escalar
+    /** \brief M&eacute;todo no miembro de la clase que multiplica una matriz con un n&uacute;mero escalar
      *
      * \param escalar double, el escalar por el que se va a multiplicar
-     * \param v Matriz, Matriz por la que se multiplicará el escalar
-     * \return Matriz, Devuelve una matriz con la operación ya realizada
+     * \param v Matriz, Matriz por la que se multiplicar&aacute; el escalar
+     * \return Matriz, Devuelve una matriz con la operaci&oacute;n ya realizada
      *
      */
     friend Matriz operator* (double escalar, const Matriz v);
@@ -83,29 +83,29 @@ public:
     Matriz invertida() const;
 
 
-    /** \brief Método que suma dos matrices
+    /** \brief M&eacute;todo que suma dos matrices
      *
      * \param v const Matriz, matriz con la que se va a sumar el objeto de la clase
      * \return Matriz, resultado de sumar las dos matrices
-     * \throw Excepción que tira cuando eln tamaño de las matrices no es compatible
+     * \throw Excepci&oacute;n que tira cuando eln tama&ntilde;o de las matrices no es compatible
      */
     Matriz operator+(const Matriz v) const;
 
 
-    /** \brief Método que resta dos matrices
+    /** \brief M&eacute;todo que resta dos matrices
      *
      * \param v const Matriz, matriz con la que se va a restar el objeto de la clase
      * \return Matriz, resultado de restar las dos matrices
-     * \throw Excepción que tira cuando eln tamaño de las matrices no es compatible
+     * \throw Excepci&oacute;n que tira cuando eln tama&ntilde;o de las matrices no es compatible
      */
     Matriz operator-(const Matriz v) const;
 
 
-    /** \brief Método que redimensiona una matriz,
-        Si es una tamaño más chico, lo trunca,
-     *  Si es más grande, añade 0
-     * \param reng int El número de renglones al que deseas redimensionar
-     * \param col int El número de columnas al que deseas redimensionar
+    /** \brief M&eacute;todo que redimensiona una matriz,
+        Si es una tama&ntilde;o m&aacute;s chico, lo trunca,
+     *  Si es m&aacute;s grande, a&ntilde;ade 0
+     * \param reng int El n&uacute;mero de renglones al que deseas redimensionar
+     * \param col int El n&uacute;mero de columnas al que deseas redimensionar
      * \return Matriz, Devuelve la matriz redimensionada
      *
      */
@@ -122,10 +122,10 @@ private:
 
 };
 
-/** \brief Método que verifica que si se haya ingresado un número entero
+/** \brief M&eacute;todo que verifica que si se haya ingresado un n&uacute;mero entero
  *
- * \param solicitud[] const char, instrucción de que tipo de dato  es el admitido
- * \return int Devuelve el número después de la verificación
+ * \param solicitud[] const char, instrucci&oacute;n de que tipo de dato  es el admitido
+ * \return int Devuelve el n&uacute;mero despu&eacute;s de la verificaci&oacute;n
  *
  */
 int Capturarentero(const char solicitud[]);

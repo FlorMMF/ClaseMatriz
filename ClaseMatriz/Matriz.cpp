@@ -32,7 +32,7 @@ Matriz::Matriz(int reng, int col){
             }
         }
     }catch (bad_alloc &) {
-        throw "Problema de asignacion de memoria";
+        throw "Problema de asignaci\242n de memoria";
     }
 }
 
@@ -94,7 +94,7 @@ Matriz Matriz::operator+(const Matriz v) const{
 
 Matriz Matriz::operator*(const Matriz v) const{
 
-    if(columnas != v.renglones && renglones != v.columnas)throw "Matrices incompatibles para la multiplicacion";
+    if(columnas != v.renglones && renglones != v.columnas)throw "Matrices incompatibles para la multiplicaci\242n";
     Matriz s(renglones,v.columnas);
     for(int i = 0; i < renglones; ++i){
         for(int j = 0; j < v.columnas; ++j){
@@ -224,10 +224,10 @@ std::ostream &operator<<(std::ostream &salida, const Matriz &v) {
 //Metodo auxiliar
 int Capturarentero(const char solicitud[]){
     int num;
-    cout<<solicitud;
+    cout<<solicitud << endl;
     cin>>num;
     while (cin.fail()){
-        cout<<"Erorr: no es un numero"<<endl;
+        cout<<"Erorr: no es un n\243mero"<<endl;
         cin.clear();
         cin.ignore(numeric_limits<int>::max(),'\n');
         cout<<solicitud;
