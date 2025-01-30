@@ -50,9 +50,6 @@ int main()
         //Producto de dos matrices *****************************************************
 
         //Producto de una matriz por un escalar ****************************************
-         Matriz s(Vn,Vm);
-        s = 3 *v;
-        cout << s;
 
         //La transpuesta de una matriz *************************************************
 
@@ -69,8 +66,6 @@ int main()
         r = v.Redimensionar(Rn,Rm);
         cout << " Esta es la matriz redimensionada" << endl;
         cout << r;
-
-
     }catch(char const*mensaje){
         cerr << mensaje;
     }
