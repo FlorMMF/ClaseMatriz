@@ -235,3 +235,13 @@ int Capturarentero(const char solicitud[]){
     }
     return num;
 }
+
+Matriz operator* (double escalar, const Matriz v){
+    Matriz s(v.renglones,v.columnas);
+    for(int i = 0; i < v.renglones ; ++ i){
+        for(int j = 0; j < v.columnas; ++j)
+        s.componente[i][j] = v.componente[i][j]*escalar;
+    }
+    return s;
+
+}

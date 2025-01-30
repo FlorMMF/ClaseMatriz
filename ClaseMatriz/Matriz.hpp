@@ -87,10 +87,28 @@ public:
      *
      * \param v const Matriz, matriz con la que se va a sumar el objeto de la clase
      * \return Matriz, resultado de sumar las dos matrices
-     *
+     * \throw Excepción que tira cuando eln tamaño de las matrices no es compatible
      */
     Matriz operator+(const Matriz v) const;
+
+
+    /** \brief Método que resta dos matrices
+     *
+     * \param v const Matriz, matriz con la que se va a restar el objeto de la clase
+     * \return Matriz, resultado de restar las dos matrices
+     * \throw Excepción que tira cuando eln tamaño de las matrices no es compatible
+     */
     Matriz operator-(const Matriz v) const;
+
+
+    /** \brief Método que redimensiona una matriz,
+        Si es una tamaño más chico, lo trunca,
+     *  Si es más grande, añade 0
+     * \param reng int El número de renglones al que deseas redimensionar
+     * \param col int El número de columnas al que deseas redimensionar
+     * \return Matriz, Devuelve la matriz redimensionada
+     *
+     */
     Matriz Redimensionar(int reng, int col) const;
 
     Matriz operator*(const Matriz v) const ;
@@ -104,6 +122,12 @@ private:
 
 };
 
+/** \brief Método que verifica que si se haya ingresado un número entero
+ *
+ * \param solicitud[] const char, instrucción de que tipo de dato  es el admitido
+ * \return int Devuelve el número después de la verificación
+ *
+ */
 int Capturarentero(const char solicitud[]);
 
 #endif //MATRIZ_HPP_INCLUDED
