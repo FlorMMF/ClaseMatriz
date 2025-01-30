@@ -11,3 +11,16 @@
 1738114027 c:\users\dell\documents\flor\lcc\cuarto semestre\estructuradatos\clasematriz\clasematriz\matriz.hpp
 	<iostream>
 
+1738258647 source:c:\users\surface\documents\estructura de datos\clasematriz\clasematriz\main.cpp
+	<iostream>
+	"Matriz.hpp"
+
+1738259933 c:\users\surface\documents\estructura de datos\clasematriz\clasematriz\matriz.hpp
+	<iostream>
+
+1738258436 source:c:\users\surface\documents\estructura de datos\clasematriz\clasematriz\matriz.cpp
+	<iostream>
+	"Matriz.hpp"
+	<cmath>
+	<limits>
+

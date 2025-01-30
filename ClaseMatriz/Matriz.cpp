@@ -1,7 +1,20 @@
 #include <iostream>
 #include "Matriz.hpp"
 #include <cmath>
+#include <limits>
 using  namespace std;
+
+/**
+
+ * \file Matriz.cpp
+
+ * Este archivo desarrolla las funciones declaradas en Matiz.hpp
+
+ * \author Flor Machado y Elias Peregrina
+
+ * \date 30/01/2025
+
+ */
 
 //Constructor y destructor ******************************
 
@@ -79,9 +92,25 @@ Matriz Matriz::operator+(const Matriz v) const{
 
 }
 
+Matriz Matriz::operator*(const Matriz v) const{
+
+    if(columnas != v.renglones && renglones != v.columnas)throw "Matrices incompatibles para la multiplicacion";
+    Matriz s(renglones,v.columnas);
+    for(int i = 0; i < renglones; ++i){
+        for(int j = 0; j < v.columnas; ++j){
+            for(int k = 0; k < columnas ; ++ k){
+                s.componente[i][j] += componente[i][k]*v.componente[k][j];
+            }
+        }
+    }
+
+    return s;
+
+}
+
 Matriz Matriz::operator-(const Matriz v) const{
 
-    if(renglones != v.renglones || columnas != v.columnas)throw "Matrices incompatibles para la suma";
+    if(renglones != v.renglones || columnas != v.columnas)throw "Matrices incompatibles para la resta";
     Matriz s(renglones,columnas);
     for(int j = 0; j < s.renglones; ++j){
         for(int i = 0; i < s.columnas ; ++ i){
@@ -190,4 +219,19 @@ std::ostream &operator<<(std::ostream &salida, const Matriz &v) {
         salida << endl;
     }
     return salida;
+}
+
+//Metodo auxiliar
+int Capturarentero(const char solicitud[]){
+    int num;
+    cout<<solicitud;
+    cin>>num;
+    while (cin.fail()){
+        cout<<"Erorr: no es un numero"<<endl;
+        cin.clear();
+        cin.ignore(numeric_limits<int>::max(),'\n');
+        cout<<solicitud;
+        cin>> num;
+    }
+    return num;
 }
