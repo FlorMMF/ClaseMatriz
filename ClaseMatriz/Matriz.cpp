@@ -150,9 +150,7 @@ Matriz Matriz::transponida() const {
 
 //Invertida de matriz cuadrada
 Matriz Matriz::invertida() const {
-    if (renglones != columnas) {
-        throw "Solo se puede calcular la inversa de matrices cuadradas";
-    }
+    if (renglones != columnas)throw "Solo se puede calcular la inversa de matrices cuadradas";
     int n = renglones;
     Matriz inversa(n, n);
     Matriz temp(*this);
@@ -164,9 +162,7 @@ Matriz Matriz::invertida() const {
     }
 
     for (int i = 0; i < n; ++i) {
-        if (temp.componente[i][i] == 0) {
-            throw "La matriz no es invertible";
-        }
+        if (temp.componente[i][i] == 0)throw "La matriz no es invertible";
         double pivote = temp.componente[i][i];
         for (int j = 0; j < n; ++j) {
             temp.componente[i][j] /= pivote;

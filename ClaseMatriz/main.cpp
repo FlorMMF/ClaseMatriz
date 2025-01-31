@@ -82,11 +82,21 @@ int main()
                     cout <<  endl << endl << v << endl << endl << "*" << endl << endl << escalar << endl << endl << "=" << endl << endl << s;
                     break;
                 case 5:
+                    //M&eacute:todo para obtener la transpuesta de una matriz
+                    s = v.transponida();
+                    cout << "La transpuesta de la matriz es:" << endl << s;
                     break;
                 case 6:
+                    //M&eacute:todo para calcula la invertida de una matriz
+                    try {
+                        s = v.invertida();
+                        cout << "La inversa de la matriz es:" << endl << s;
+                    } catch (const char* msg) {
+                        cerr << msg << endl;
+                    }
                     break;
                 case 7:
-                     //M&eacute;todo de redimensionamiento de una matriz ********************************
+                    //M&eacute;todo de redimensionamiento de una matriz ********************************
                     int Rn, Rm;
 
                     Rn = Capturarentero("Escribe la cantidad de renglones que tendr\240 tu matriz redimensionada");
